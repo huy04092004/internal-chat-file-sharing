@@ -20,8 +20,10 @@ A backend system for an internal chat and file sharing platform, built with Java
 - WebSocket
 - FTP
 
-## System Architecture
-![System Architecture](docs/architecture.png)
+## Demo
+Full UI screenshots:  
+https://github.com/huy04092004/internal-chat-file-sharing/tree/main/docs/screenshots
+
 
 ## Project Structure (Core)
 
