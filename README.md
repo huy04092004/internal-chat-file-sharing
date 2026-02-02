@@ -24,10 +24,10 @@ A backend system for an internal chat and file sharing platform, built with Java
 Full UI screenshots:  
 https://github.com/huy04092004/internal-chat-file-sharing/tree/main/docs
 
-'''
+
 ## Project Structure
 
-
+```text
 src/main/java/it/davidenastri/clouddrive/
 ├── config/              // Security, WebSocket, FTP configurations
 ├── controller/          // REST controllers (API layer)
@@ -35,7 +35,8 @@ src/main/java/it/davidenastri/clouddrive/
 ├── model/               // Entity models
 ├── mapper/              // Data mappers
 └── P2PServerStarter.java // Application entry point
-'''
+...
+
 
 
 ## Main APIs
