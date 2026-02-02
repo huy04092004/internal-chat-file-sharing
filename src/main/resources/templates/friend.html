@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends</title>
+
+    <!-- Link tới Bootstrap CSS từ CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Link tới FontAwesome cho các icon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+    <!-- Tùy chỉnh CSS -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #31719a, #588875);
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+
+        .card-header {
+            background-color: #4e73df;
+            color: white;
+            font-weight: bold;
+            border-radius: 15px 15px 0 0;
+            padding: 10px;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .table {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .btn-custom {
+            background-color: #4e73df;
+            color: white;
+            border-radius: 30px;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: #2e59d9;
+        }
+
+        .btn-danger-custom {
+            background-color: #e74a3b;
+            color: white;
+            border-radius: 30px;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+            border: none;
+        }
+
+        .btn-danger-custom:hover {
+            background-color: #c0392b;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            color: #4e73df;
+        }
+
+        .back-link a:hover {
+            color: #2e59d9;
+        }
+
+        /* Thêm hình ảnh vào bảng yêu cầu kết bạn */
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Hiệu ứng hover cho hàng trong bảng */
+        .table tbody tr:hover {
+            background-color: #f1f1f1;
+            transform: scale(1.02);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .form-group input {
+            border-radius: 25px;
+        }
+
+        .form-group button {
+            border-radius: 25px;
+        }
+
+        /* Card Body */
+        .card-body {
+            padding: 30px;
+        }
+
+        /* Giảm khoảng cách giữa các phần */
+        h3.mb-4 {
+            margin-bottom: 30px;
+        }
+
+        /* Thêm margin cho back-link */
+        .back-link a {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Container -->
+<div class="container">
+
+    <!-- Pending Friend Requests Section -->
+    <h3 class="mb-4 text-center">Pending Friend Requests</h3>
+    <div class="card">
+        <div class="card-header">
+            <i class="fas fa-user-plus"></i> Pending Friend Requests
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Friend's Username</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Lặp qua danh sách yêu cầu kết bạn -->
+                <tr th:each="friend : ${pendingRequests}">
+                    <td>
+                        <!-- Thêm ảnh đại diện -->
+                        <img src="https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg" alt="Profile Image" class="profile-img">
+                        <span th:text="${friend.friendUsername}"></span>
+                    </td>
+                    <td>
+                        <!-- Đồng ý -->
+                        <form action="/friends/respond-request" method="post" style="display:inline;">
+                            <input type="hidden" name="friendId" th:value="${friend.friendId}">
+                            <input type="hidden" name="username" value="CURRENT_USERNAME">
+                            <input type="hidden" name="status" value="accepted">
+                            <button type="submit" class="btn btn-custom btn-sm">
+                                <i class="fas fa-check"></i> Accept
+                            </button>
+                        </form>
+
+                        <!-- Từ chối -->
+                        <form action="/friends/respond-request" method="post" style="display:inline;">
+                            <input type="hidden" name="friendId" th:value="${friend.friendId}">
+                            <input type="hidden" name="username" value="CURRENT_USERNAME">
+                            <input type="hidden" name="status" value="blocked">
+                            <button type="submit" class="btn btn-danger-custom btn-sm">
+                                <i class="fas fa-times"></i> Decline
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Send Friend Request Section -->
+    <h3 class="mb-4 text-center">Send Friend Request</h3>
+    <div class="card">
+        <div class="card-header">
+            <i class="fas fa-paper-plane"></i> Send Friend Request
+        </div>
+        <div class="card-body">
+            <form action="/friends/send-request" method="post">
+                <div class="form-group">
+                    <label for="username">Your Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Your Username" required>
+                </div>
+                <div class="form-group">
+                    <label for="friendUsername">Friend's Username</label>
+                    <input type="text" class="form-control" id="friendUsername" name="friendUsername" placeholder="Friend's Username" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Send Friend Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Back Link -->
+    <div class="back-link">
+        <a href="/home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+</div>
+
+<!-- Thêm các script Bootstrap và các thư viện JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
