@@ -33,7 +33,6 @@ src/main/java/it/davidenastri/clouddrive/
 ├── services/            // Business logic
 ├── model/               // Entity models
 ├── mapper/              // Data mappers
-├── interceptor/         // Global exception handling
 └── P2PServerStarter.java // Application entry point
 
 ## Main APIs
