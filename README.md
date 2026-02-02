@@ -22,7 +22,7 @@ A backend system for an internal chat and file sharing platform, built with Java
 
 ## Demo
 Full UI screenshots:  
-https://github.com/huy04092004/internal-chat-file-sharing/tree/main/docs/screenshots
+https://github.com/huy04092004/internal-chat-file-sharing/docs
 
 
 ## Project Structure (Core)
