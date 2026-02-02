@@ -36,6 +36,7 @@ src/main/java/it/davidenastri/clouddrive/
 ├── mapper/              // Data mappers
 └── P2PServerStarter.java // Application entry point
 
+
 ## Main APIs
 | Method | Endpoint | Description |
 |--------|---------|------------|
@@ -45,6 +46,7 @@ src/main/java/it/davidenastri/clouddrive/
 | POST | /api/files/upload | Upload file |
 | GET | /api/files/download/{id} | Download file |
 | GET | /api/users/online | Get online users |
+
 
 ## How to Run Locally
 
