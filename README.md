@@ -56,7 +56,7 @@ src/main/java/it/davidenastri/clouddrive/
 
 ### Steps
 ```bash
-git clone https://github.com/huy04092004/internal-chat-system.git
-cd internal-chat-system
+git clone https://github.com/huy04092004/internal-chat-file-sharing.git
+cd internal-chat-file-sharing
 mvn clean install
 mvn spring-boot:run
