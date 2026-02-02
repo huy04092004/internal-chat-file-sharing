@@ -25,19 +25,17 @@ Full UI screenshots:
 https://github.com/huy04092004/internal-chat-file-sharing/tree/main/docs
 
 
-## Project Structure (Core)
+## Project Structure
 
-    travel-ai-api/
-    ├── routes/
-    │   ├── direction.js      // Direction APIs
-    │   ├── interest.js       // User interest APIs
-    │   ├── location.js       // Location APIs
-    │   ├── locationv2.js     // Enhanced location APIs
-    │   └── travel_AI.js      // AI itinerary generation APIs
-    ├── models/
-    │   ├── Interests.js      // Interest schema
-    │   ├── Location_v2.js    // Location schema
-    │   └── Itinerary.js      // Itinerary schema
+```text
+src/main/java/it/davidenastri/clouddrive/
+├── config/              // Security, WebSocket, FTP configurations
+├── controller/          // REST controllers (API layer)
+├── services/            // Business logic
+├── model/               // Entity models
+├── mapper/              // Data mappers
+├── interceptor/         // Global exception handling
+└── P2PServerStarter.java // Application entry point
 
 ## Main APIs
 | Method | Endpoint | Description |
