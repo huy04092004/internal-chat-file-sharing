@@ -1,6 +1,6 @@
 # Internal Chat and File Sharing System
 
-A backend system for an internal chat and file sharing platform, built with Java and Spring Boot, allowing users to communicate and share files within a local network.
+A full-stack system for an internal chat and file sharing platform, built with Java and Spring Boot, allowing users to communicate and securely share files within a local network.
 
 ## Features
 - Real-time messaging between users
@@ -10,6 +10,7 @@ A backend system for an internal chat and file sharing platform, built with Java
 - Folder and file management
 - Peer-to-peer file transfer
 - Online user tracking
+- Web-based user interface
 
 ## Tech Stack
 - Java
@@ -19,6 +20,8 @@ A backend system for an internal chat and file sharing platform, built with Java
 - MySQL
 - WebSocket
 - FTP
+- HTML
+- CSS
 
 ## Demo
 Full UI screenshots:  
